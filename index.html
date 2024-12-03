@@ -1,41 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Riddle|vaibhav</title>
-    </head>
-    <body>
-        <div class="brain-loader">
-            <div class="brain-image"></div>
-            <div class="loading-text">
-                Loading Riddles
-                <span class="loading-dots"></span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle|vaibhav</title>
+    <!-- Tailwind and Shadcn CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-background font-sans antialiased">
+
+    <!-- Loader -->
+    <div class="brain-loader fixed inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm" id="loader">
+        <div class="flex flex-col items-center gap-4">
+            <div class="h-40 w-40 animate-pulse">
+                <img src="./Assests/brain.png" alt="brain" class="h-full w-full">
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-lg font-medium">Loading Riddles</span>
+                <span class="animate-bounce">...</span>
             </div>
         </div>
-        <div class="Main">
-            <div class="card">
-                <div class="jokesdisplay">
-                    <h1 class="setup"></h1>
-                    <h1 class="delivery"></h1>
-                    <div class="buttons">
-                        <button class="showAns">show answer</button>
-                        <button class="nextmeme">next riddle</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto flex min-h-screen flex-col items-center justify-center p-4 ">
+        <div class="w-full max-w-md space-y-6 ">
+            <!-- Card -->
+            <div class="rounded-lg border bg-card p-6 shadow-sm">
+                <!-- Riddle Content -->
+                <div class="space-y-2 text-center mb-6">
+                    <h1 class="setup text-2xl font-bold"></h1>
+                    <h1 class="delivery text-xl text-muted-foreground"></h1>
+                </div>
+                
+                <div class="inset-0 -z-10 size-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] border-t pt-4">
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button class="showAns mb-2 me-2 rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800">
+                            Show Answer
+                        </button>
+                        <button class="nextmeme mb-2 me-2 rounded-lg bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-teal-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-teal-300 dark:shadow-lg dark:shadow-teal-800/80 dark:focus:ring-teal-800">
+                            Next Riddle
+                        </button>
+                        <button class="translateBtn mb-2 me-2 rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800">
+                            हिंदी पहेली
+                        </button>
                     </div>
                 </div>
-                <a href="https://github.com/Vaibhav9526/RiddleApp" target="_blank" rel="noopener noreferrer">
-                    <h3>Fork this repo,fix any issue and add more riddles</h3>
+
+                <!-- GitHub Link -->
+                <a href="https://github.com/Vaibhav9526/RiddleApp" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="mt-4 block text-center text-sm text-muted-foreground hover:text-foreground flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                    </svg>
+                    Fork
+                    <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0a8 8 0 00-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2 .4-2.5-.5-2.7-1 0-.1-.5-.9-.8-1.1-.3-.2-.7-.6 0-.6.6 0 1 .6 1.2.8.7 1.2 1.9 1 2.4.7 0-.5.2-.9.5-1.1-1.8-.3-3.7-1-3.7-4 0-.9.3-1.6.8-2.2 0-.2-.3-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.1 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3-1.9 3.7-3.7 4 .3.2.5.7.5 1.4v2.2c0 .2.1.5.5.4A8 8 0 008 0z"></path>
+                    </svg>
+                    Fix
+                    <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
+                    </svg>
+                    Star
                 </a>
             </div>
-            <footer>
-                <div id="footer-section" class="text-center">
-                    <div class="container">
-                        <a class="github" href="https://github.com/Vaibhav9526" target="_blank">@VAIBHAV SHARMA</a>
-                    </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto py-6 text-center">
+            <div class="flex flex-col items-center gap-3">
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com/Vaibhav9526" 
+                       target="_blank" 
+                       class="text-muted-foreground hover:text-foreground transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:scale-110 transition-transform duration-200"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                </div>
+                <div class="text-sm text-muted-foreground">
+                    <span>Created with ❤️ by </span>
+                    <a href="https://github.com/Vaibhav9526" 
+                       target="_blank" 
+                       class="font-medium hover:text-foreground transition-colors duration-200">
+                        VAIBHAV SHARMA
+                    </a>
+                </div>
+                <div class="text-xs text-muted-foreground">
+                    © <span id="year"></span> All rights reserved
                 </div>
             </div>
         </footer>
-        <script src="script.js"></script>
-    </body>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const year = new Date().getFullYear();
+        document.getElementById('year').textContent = year;
+    </script>
+</body>
 </html>
