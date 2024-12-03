@@ -4,7 +4,17 @@ const setup = document.querySelector('.setup');
 const answer = document.querySelector('.showAns');
 const delivery = document.querySelector('.delivery');
 const nextbtn = document.querySelector('.nextmeme');
-const apiurl = "./data.json";
+const translateBtn = document.querySelector('.translateBtn');
+var apiurl = "./data.json";
+var isEnglish = true;
+var AnsShow = false;
+
+translateBtn.addEventListener("click", () => {
+  isEnglish = !isEnglish;
+  apiurl = isEnglish ? './data.json' : './Paheli.json';
+  translateBtn.textContent = isEnglish ? 'हिंदी' : 'English';
+  riddles();
+});
 
 window.addEventListener('load' , ()=>{
   setTimeout(()=>{
@@ -33,17 +43,14 @@ async function riddles() {
   setup.innerHTML = data[randomIndex].riddle;
   answer.style.display = "block";
   delivery.style.display = "none";
-
-answer.addEventListener("click", function() {
+  
+  answer.addEventListener("click", () => {
     answer.style.display = "none";
     delivery.style.display = "block";
     delivery.innerHTML = data[randomIndex].answer;
   });
 }
 
-answer.addEventListener("click", () => {
-  delivery.style.display = 'block';
-});
 
 nextbtn.addEventListener("click", () => {
   riddles(); 

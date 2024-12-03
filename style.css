@@ -55,17 +55,14 @@ html, body {
 }
 .card {
     box-shadow: 2px 1px 19px 5px #000000;
-    width: 90%;
-    max-width: 90%; /* Allow the card to expand up to 90% of the viewport width */
-    min-width: 300px; /* Set a minimum width */
+    width: min(90%, 1200px);
     background: linear-gradient(135deg, #03346E, #6EACDA);
     color: #fff;
     margin: 20px auto;
     border-radius: 20px;
-    /* padding: 40px; */
     text-align: center;
-    overflow-wrap: break-word; /* Ensures long text wraps within the div */
-    flex-grow: 1; /* Allow the card to grow as needed */
+    overflow-wrap: break-word;
+    flex-grow: 1;
 }
 
 .nextmeme {
@@ -101,7 +98,6 @@ html, body {
     cursor: pointer;
     overflow: hidden;
     outline: none;
-    /* background: linear-gradient(135deg, #03346E, #6EACDA); */
     border: none;
     border-radius: 12px;
     color: rgb(148, 224, 165);
@@ -111,18 +107,14 @@ html, body {
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
 }
 
 .showAns:hover {
-    /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); */
     transform: translateY(-2px);
     color: rgb(69, 211, 69);
 }
 
 .showAns:active {
-    transform: translateY(1px);
-    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
 }
 
 .jokesdisplay {
@@ -131,13 +123,12 @@ html, body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
+    padding: clamp(20px, 4vw, 40px);
 }
 
 .jokesdisplay h1 {
     margin: 10px 0;
-    font-size: 1.4em;
-    /* word-wrap: break-word;*/
+    font-size: clamp(1em, 4vw, 1.4em);
 }
 h3 {
     background: linear-gradient(45deg, #043b72, #000000);
@@ -147,7 +138,6 @@ h3 {
     text-align: center;
     padding: 10px;
     font-size: 0.9em;
-    /* border-bottom: 2px dashed #4ecdc4; */
     text-transform: uppercase;
     letter-spacing: 1.5px;
     transition: all 0.3s ease;
@@ -160,19 +150,8 @@ h3 {
 a{
     text-decoration: none;
 }
-@media (max-width: 600px) {
-    .card {
-        width: 100%; /* Ensure the card takes full width on small screens */
-        padding: 20px; /* Adjust padding for smaller screens */
-    }
-
-    .jokesdisplay h1 {
-        font-size: 4vw;
-    }
-}
-
 .setup {
-    font-size: 2em;
+    font-size: clamp(1.5em, 5vw, 2em);
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 20px;
@@ -181,7 +160,7 @@ a{
 }
 
 .delivery {
-    font-size: 1.8em;
+    font-size: clamp(1.3em, 4vw, 1.8em);
     font-style: italic;
     color: #bfe4f8;
     margin-top: 10px;
