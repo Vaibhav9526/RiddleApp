@@ -6,34 +6,68 @@
     <title>Riddle|vaibhav</title>
     <!-- Tailwind and Shadcn CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
 </head>
-<body class="min-h-screen bg-background font-sans antialiased">
+<body class="dark:bg-gray-900 dark:text-white">
+    
+    <!-- preloader -->
+    <div
+      class="brain-loader fixed inset-0 bg-[#000] z-[9999] flex items-center justify-center"
+    >
+      <div class="flex flex-col items-center gap-4">
+        <l-quantum size="60" speed="1.75" color="white"></l-quantum>
+        <div id="text" class="text-white text-xl font-bold">
+            <h1>VAIBHAV SHARMA</h1>
+        </div>
+      </div>
+    </div>
+    <!-- Screen -->
+<div class="absolute inset-0 -z-10 size-full bg-white dark:bg-gray-900 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] dark:[background:radial-gradient(125%_125%_at_50%_10%,#1a1a1a_40%,#63e_100%)]">
 
-    <!-- Loader -->
-    <div class="brain-loader fixed inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm" id="loader">
-        <div class="flex flex-col items-center gap-4">
-            <div class="h-40 w-40 animate-pulse">
-                <img src="/Assests/Brain.png" alt="brain" class="h-full w-full">
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-lg font-medium">Loading Riddles</span>
-                <span class="animate-bounce">...</span>
+    <!-- Navbar -->
+    <nav class="border-b border-white/10 p-2 sticky top-0 z-50 bg-black/30 dark:backdrop-blur-lg backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex border border-white/50 p-1 rounded-lg bg-black">
+                    <h1 class="text-xl font-bold text-white">Riddles</h1>
+                    <h1
+                      class="text-xl ml-1 font-bold bg-orange-500 text-black px-2 rounded-lg"
+                    >
+                      Hub
+                    </h1>
+                  </div>
+                <div class="navbtn flex space-x-3">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggle" class="dark:text-amber-100/70 text-amber-300 text-xl">
+                        <i class="fas fa-sun dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+                  </div>
             </div>
         </div>
-    </div>
-
+    </nav>
+    
+    
     <!-- Main Content -->
-    <main class="container mx-auto flex min-h-screen flex-col items-center justify-center p-4 ">
-        <div class="w-full max-w-md space-y-6 ">
+    <main class="container mx-auto flex flex-col items-center justify-center mt-10">
+        <div class="w-full max-w-md space-y-6">
             <!-- Card -->
-            <div class="rounded-lg border bg-card p-6 shadow-sm">
+            <div class="backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 dark:backdrop-blur-lg dark:shadow-amber-200/10 dark:border-gray-700/30 transform transition-all">
                 <!-- Riddle Content -->
                 <div class="space-y-2 text-center mb-6">
                     <h1 class="setup text-2xl font-bold"></h1>
                     <h1 class="delivery text-xl text-muted-foreground"></h1>
                 </div>
                 
-                <div class="inset-0 -z-10 size-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] border-t pt-4">
+                <div class="inset-0 -z-10 size-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] border-t pt-3 pb-2">
                     <div class="flex flex-wrap justify-center gap-2">
                         <button class="showAns mb-2 me-2 rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800">
                             Show Answer
@@ -46,14 +80,14 @@
                         </button>
                     </div>
                 </div>
-
+                
                 <!-- GitHub Link -->
                 <a href="https://github.com/Vaibhav9526/RiddleApp" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="mt-4 block text-center text-sm text-muted-foreground hover:text-foreground flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="mt-4 block text-center text-sm text-muted-foreground hover:text-foreground flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
                     </svg>
                     Fork
                     <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
@@ -67,36 +101,52 @@
                 </a>
             </div>
         </div>
-
+        
         <!-- Footer -->
-        <footer class="mt-auto py-6 text-center">
-            <div class="flex flex-col items-center gap-3">
-                <div class="flex items-center space-x-4">
-                    <a href="https://github.com/Vaibhav9526" 
-                       target="_blank" 
-                       class="text-muted-foreground hover:text-foreground transition-colors duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:scale-110 transition-transform duration-200"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    </a>
-                </div>
-                <div class="text-sm text-muted-foreground">
-                    <span>Created with ❤️ by </span>
-                    <a href="https://github.com/Vaibhav9526" 
-                       target="_blank" 
-                       class="font-medium hover:text-foreground transition-colors duration-200">
-                        VAIBHAV SHARMA
-                    </a>
-                </div>
-                <div class="text-xs text-muted-foreground">
-                    © <span id="year"></span> All rights reserved
-                </div>
-            </div>
-        </footer>
-    </main>
-
+        <footer
+      class="fixed bottom-0 w-full bg-black/30 dark:bg-gray-800/30 backdrop-blur-md border-t border-white/10 py-4"
+    >
+      <div class="container mx-auto text-center px-4">
+        <a
+          href="https://github.com/Vaibhav9526"
+          target="_blank"
+          class="text-gray-300 hover:text-yellow-300 transition-colors flex items-center justify-center space-x-2"
+        >
+          <i class="fab fa-github"></i>
+          <span>Vaibhav Sharma</span>
+        </a>
+      </div>
+    </footer>
+</main>
+    
+</div>
     <script src="script.js"></script>
+    <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"
+  ></script>
     <script>
-        const year = new Date().getFullYear();
-        document.getElementById('year').textContent = year;
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        
+        // Check for saved theme preference, otherwise use system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            // Toggle theme
+            document.documentElement.classList.toggle('dark');
+            
+            // Save preference
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
     </script>
 </body>
 </html>

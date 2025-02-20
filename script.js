@@ -20,7 +20,7 @@ window.addEventListener('load' , ()=>{
   setTimeout(()=>{
     preloader.style.display = 'none';
     Page.style.display = 'block';
-   } , 3000)
+   } , 1500)
 });
 
 let usedIndices = new Set();
@@ -28,18 +28,22 @@ let usedIndices = new Set();
 async function riddles() {
   const response = await fetch(apiurl);
   var data = await response.json();
- 
+  
   if (usedIndices.size === data.length) {
     console.error("No more unique riddles left!");
     return; 
   }
-
+  
   let randomIndex;
   do {
-    randomIndex = Math.floor(Math.random() * data.length); 
-  } while (usedIndices.has(randomIndex));
+    randomIndex = Math.floor(Math.random() * data.length);
+    // Keep trying until we find either a short enough riddle or have tried all riddles
+  } while (usedIndices.has(randomIndex) || 
+           (data[randomIndex].riddle.length > 300 && usedIndices.size < data.length - 1));
+  
+  usedIndices.add(randomIndex);
 
-  usedIndices.add(randomIndex); 
+  // If we couldn't find a short enough riddle, use this one anyway
   setup.innerHTML = data[randomIndex].riddle;
   answer.style.display = "block";
   delivery.style.display = "none";
